@@ -16,22 +16,6 @@
 		display: inline-flex;
 		margin-right: 10px;
 		opacity: 0.6;
-		& .badge {
-			width: 10px;
-			height: 10px;
-			border-radius: 30px;
-			position: relative;
-			left: 4px;
-			&.bage--pink {
-				background-color: pink;
-			}
-			&.bage--green {
-				background-color: green;
-			}
-			&.bage--blue {
-				background-color: blue;
-			}
-		}
 	}
 	&__add-btn {
 		& i {
@@ -50,5 +34,9 @@
 					color:  rgb(79, 206, 138);
 				}
 		}
+	}
+	& .badge {
+		position: relative;
+		left: 4px;
 	}
 }

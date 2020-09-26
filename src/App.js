@@ -1,17 +1,15 @@
 import React from 'react'
 import './App.scss'
 import List from './componets/List/'
-import AddListButton from './componets/AddButtonList'
+import AddList from './componets/AddList'
 import listIcon from './assets/img/list.svg'
-
+import {colors} from './assets/db.json';
 
 function App() {
-	const [value, setValue] = React.useState('Hello World!')
 	return (
 		<div className="todo">
 			<div className="todo__sidebar">
 
-				<button onClick={() => setValue('It word of state!')}>Обновить</button>
 				<List items={[
 					{
 						id: 1,
@@ -43,7 +41,7 @@ function App() {
 				isRemoveable
 				/>
 
-				< AddListButton />
+				< AddList colors={colors} />
 
 			</div>
 			

@@ -12,3 +12,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.input {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 10px 15px;
+
+	&:active {
+		border: 1px solid #aaa;
+	}
+}
+
+.btn {
+	border: 0;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: rgb(128, 195, 140);
+	cursor: pointer;
+
+	&:hover {
+		background-color: darken(rgb(142, 221, 156), 7%);
+	}
+
+	&:active {
+		background-color: darken(rgb(142, 221, 156), 14%);
+	}
+}
+
