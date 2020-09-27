@@ -1,11 +1,27 @@
-import React from 'react'
-import './App.scss'
+import React, { useState } from 'react'
 import List from './componets/List/'
 import AddList from './componets/AddList'
+import Tasks from './componets/Tasks'
+
 import listIcon from './assets/img/list.svg'
-import {colors} from './assets/db.json';
+import DB from './assets/db.json';
+import './App.scss'
 
 function App() {
+	const [lists, setLists] = useState(
+		DB.lists.map((list) => {
+		list.color = DB.colors.find((color) => color.id === list.colorId).name
+		return list
+	}))
+	const addList = (obj) => {
+		const newList = [...lists, obj]
+		setLists(newList)
+	}
+	const removeList = (list) => {
+		if (window.confirm('Вы действительно хотите удалить список?')) {
+			console.log(list)
+		}
+	}
 	return (
 		<div className="todo">
 			<div className="todo__sidebar">
@@ -13,40 +29,23 @@ function App() {
 				<List items={[
 					{
 						id: 1,
-						title: 'Все задачи',
+						name: 'Все задачи',
 						icon: <img src={listIcon} alt="List icon" />,
-						
 					}
 				]}
 				/>
 
-				<List items={[
-					{
-						id: 1,
-						title: 'Frontend',
-						color: 'pink'
-					},
-					{
-						id: 2,
-						title: 'Покупки',
-						color: 'green',
-						isActive: true
-					},
-					{
-						id: 3,
-						title: 'Фильмы и сериалы',
-						color: 'blue'
-					},
-				]}
+				<List items={lists}
 				isRemoveable
+				onRemove = {(list) => removeList(list)}
 				/>
 
-				< AddList colors={colors} />
+				< AddList onAdd={addList} colors={DB.colors} />
 
 			</div>
 			
 			<div className="todo__tasks">
-				
+				<Tasks />
 			</div>
 		</div>
 	)

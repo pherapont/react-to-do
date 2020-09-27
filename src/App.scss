@@ -7,13 +7,19 @@
 	transform: translate(-50%,-50%);
 	box-shadow: 10px 9px 10px #d8dae6;
 	border-radius: 10px;
-	overflow: hidden;
+	// overflow: hidden;
 	font-size: 14px;
+	display: flex;
 	&__sidebar {
 		background-color: #f4f6f8;
 		width: 210px;
 		height: 100%;
 		border-right: 1px solid  #d6d9db;
 		padding: 60px 20px;
+		border-radius: 10px 0 0 10px;
+	}
+	&__tasks {
+		flex: 1;
+		padding: 60px;
 	}
 }
