@@ -24,7 +24,7 @@ const AddList = ({onAdd, colors}) => {
 			return
 		}
 		const color = colors.find( c => c.id === selectedColor).name
-		onAdd({"id": Math.random(),"name": inputValue, color})
+		onAdd({"id": Math.random(), "name": inputValue, color})
 		onClose()
 	}
 

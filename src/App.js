@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import List from './componets/List/'
-import AddList from './componets/AddList'
-import Tasks from './componets/Tasks'
+import {AddList, Tasks, List} from './componets';
 
 import listIcon from './assets/img/list.svg'
-import DB from './assets/db.json';
 import './App.scss'
 
 function App() {
