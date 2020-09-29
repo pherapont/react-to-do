@@ -22,3 +22,15 @@
 		}
 	}
 }
+.checkbox {
+	input {
+		display: none;
+	}
+	label {
+		width: 25px;
+		height: 25px;
+		border: 2px solid #aaa;
+		display: inline-block;
+		border-radius: 30px;
+	}
+}

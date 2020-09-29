@@ -9,7 +9,11 @@ export default function Tasks() {
 			<h2 className="tasks__title">
 				Фронтенд
 				<img src={editIcon} alt="Иконка редактировать" />
-				</h2>
+			</h2>
+			<div className="checkbox">
+				<input type="checkbox" id="checkbox" />
+				<label htmlFor="checkbox"></label>
+			</div>
 		</div>
 )
 }
