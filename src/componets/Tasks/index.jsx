@@ -10,7 +10,8 @@ export default function Tasks( {list} ) {
 				{list.name}
 				<img src={editIcon} alt="Иконка редактировать" />
 			</h2>
-			{list.tasks.map( task => (
+			{list.tasks &&
+			 list.tasks.map( task => (
 				<div key={task.id} className="tasks__item-row">
 					<div className="checkbox">
 						<input id={task.id} type="checkbox"/>

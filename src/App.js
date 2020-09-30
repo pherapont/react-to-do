@@ -10,10 +10,14 @@ function App() {
 
 	const [lists, setLists] = useState([])
 	const [colors, setColors] = useState([])
+	const [ tasks, setTasks ] = useState([])
 	
 	useEffect( () => {axios
 		.get('http://localhost:3001/lists?_expand=color&_embed=tasks')
-		.then( ({data}) => setLists(data) )
+		.then( ({data}) => {
+			setLists(data)
+			setTasks(data[0])
+		} )
 	}, [] )
 
 	useEffect(() => {	axios
@@ -34,13 +38,15 @@ function App() {
 				]}
 				/>
 
-				<List items = {lists}
-				isRemoveable
-				onRemove = {(id) => {
-					const newLists = lists.filter( list => list.id !== id )
-					setLists(newLists)
-				}}
-				/>
+					<List items = {lists}
+					isRemoveable
+					onRemove = {(id) => {
+						const newLists = lists.filter( list => list.id !== id )
+						setLists(newLists)
+					}}
+					onClickItem = { tasks => setTasks(tasks) }
+					/>
+				
 
 				< AddList
 					onAdd = { newList => setLists( prev => [...prev, newList] )}
@@ -50,7 +56,7 @@ function App() {
 			</div>
 			
 			<div className="todo__tasks">
-				{ lists.length && <Tasks list = { lists[1] } /> }
+				{ lists.length && <Tasks list = { tasks } /> }
 			</div>
 		</div>
 	)

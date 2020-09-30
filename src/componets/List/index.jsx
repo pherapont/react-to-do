@@ -6,7 +6,7 @@ import axios from 'axios';
 import './List.scss';
 import removeIcon from './../../assets/img/remove.svg';
 
-const List = ({items, isRemoveable, onClick, onRemove}) => {
+const List = ({items, isRemoveable, onClick, onRemove, onClickItem}) => {
 
 	const removeList = (id) => {
 		if (window.confirm('Вы действительно хотите удалить список?')) {
@@ -19,15 +19,18 @@ const List = ({items, isRemoveable, onClick, onRemove}) => {
 	return (
 		<ul onClick = {onClick} className="list">
 			{items.map(item => (
-				<li key={item.id} className={classNames(item.className, {active: item.isActive})}>
+				<li key={item.id} onClick={ item.tasks ? () => onClickItem(item) : null } className={classNames(item.className, {active: item.isActive})}>
 					<i>{item.icon ? item.icon : (<Badge color={item.color.name} />)}</i>
-					<span>{item.name}</span>
-				{ isRemoveable && 
-					<img
-						onClick={() => removeList(item.id)}
-						className="list__remove-icon"
-						src={removeIcon}
-						alt="Удалить список" /> }
+					<span>
+						{item.name}
+						{ item.tasks && ` (${item.tasks.length})` } 
+					</span>
+					{ isRemoveable && 
+						<img
+							onClick={() => removeList(item.id)}
+							className="list__remove-icon"
+							src={removeIcon}
+							alt="Удалить список" /> }
 				</li>
 			))}
 		</ul>

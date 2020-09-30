@@ -21,14 +21,14 @@
       "id": 5
     },
     {
-      "name": "React",
-      "colorId": 6,
-      "id": 6
-    },
-    {
       "name": "Vue",
       "colorId": 6,
       "id": 8
+    },
+    {
+      "name": "Фильмы и сериалы",
+      "colorId": 3,
+      "id": 9
     }
   ],
   "tasks": [
