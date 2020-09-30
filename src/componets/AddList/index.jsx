@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import Badge from '../Badge';
-import addIcon from './../../assets/img/add.svg'
-import closeIcon from './../../assets/img/close.svg'
 import List from './../List'
 
+import axios from 'axios';
+
+import addIcon from './../../assets/img/add.svg'
+import closeIcon from './../../assets/img/close.svg'
 import './AddList.scss'
 
 
 const AddList = ({onAdd, colors}) => {
+	
 	const [visiblePopup, setVisiblePopup] = useState(false)
-	const [selectedColor, selectColor] = useState(colors[0].id)
+	const [selectedColor, selectColor] = useState(3)
 	const [inputValue, setInputValue] = useState('')
 
 	const onClose = () => {
@@ -23,8 +26,13 @@ const AddList = ({onAdd, colors}) => {
 			alert('Введите название списка!')
 			return
 		}
-		const color = colors.find( c => c.id === selectedColor).name
-		onAdd({"id": Math.random(), "name": inputValue, color})
+		const newList = {"name": inputValue, "colorId": selectedColor}
+		const color = colors.find(color => color.id === selectedColor)
+
+		axios
+			.post('http://localhost:3001/lists', newList)
+			.then( response => onAdd( {...response.data, color} ) )
+
 		onClose()
 	}
 
