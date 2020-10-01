@@ -10,13 +10,13 @@ function App() {
 
 	const [lists, setLists] = useState([])
 	const [colors, setColors] = useState([])
-	const [ tasks, setTasks ] = useState([])
-	
+	const [ activeList, setActiveList ] = useState(null)
+
 	useEffect( () => {axios
 		.get('http://localhost:3001/lists?_expand=color&_embed=tasks')
 		.then( ({data}) => {
 			setLists(data)
-			setTasks(data[0])
+			// setActiveList(data[1])
 		} )
 	}, [] )
 
@@ -24,6 +24,22 @@ function App() {
 		.get('http://localhost:3001/colors')
 		.then( ({data}) => setColors(data) )
 	}, [])
+
+	const editListTitle = (id, title) => {
+		axios
+			.patch('http://localhost:3001/lists/' + id, { name:title })
+			.then((response) => {
+				if (response) {
+					setLists( lists => lists.map( item => {
+						if (item.id === id) {
+							item.name = title
+						}
+						return item
+					}))
+				}
+			})
+			.catch(() => alert( 'Не удалось обновить название списка!' ))
+	}
 
 	return (
 		<div className="todo">
@@ -44,7 +60,8 @@ function App() {
 						const newLists = lists.filter( list => list.id !== id )
 						setLists(newLists)
 					}}
-					onClickItem = { tasks => setTasks(tasks) }
+					onClickItem = { tasks => setActiveList(tasks) }
+					activeList = {activeList}
 					/>
 				
 
@@ -56,7 +73,11 @@ function App() {
 			</div>
 			
 			<div className="todo__tasks">
-				{ lists.length && <Tasks list = { tasks } /> }
+				{ lists.length && activeList &&
+				 <Tasks
+					list = { activeList }
+					onEditTitle = { editListTitle }
+				/> }
 			</div>
 		</div>
 	)

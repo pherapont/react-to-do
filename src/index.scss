@@ -16,6 +16,8 @@ body {
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	padding: 10px 15px;
+	display: block;
+	font-size: 14px;
 
 	&:active {
 		border: 1px solid #aaa;
@@ -30,6 +32,17 @@ body {
 	background-color: rgb(128, 195, 140);
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	font-size: 14px;
+	&.btn--white {
+		background-color:  #eee;
+		color: #828282;
+		&:hover {
+			background-color: darken(#eee, 4%);
+		}
+		&:active {
+			background-color: darken(#eee, 6%);
+		}
+	}
 
 	&:hover {
 		background-color: darken(rgb(142, 221, 156), 7%);

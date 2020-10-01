@@ -6,7 +6,7 @@ import axios from 'axios';
 import './List.scss';
 import removeIcon from './../../assets/img/remove.svg';
 
-const List = ({items, isRemoveable, onClick, onRemove, onClickItem}) => {
+const List = ({items, isRemoveable, onClick, onRemove, onClickItem, activeList}) => {
 
 	const removeList = (id) => {
 		if (window.confirm('Вы действительно хотите удалить список?')) {
@@ -19,7 +19,10 @@ const List = ({items, isRemoveable, onClick, onRemove, onClickItem}) => {
 	return (
 		<ul onClick = {onClick} className="list">
 			{items.map(item => (
-				<li key={item.id} onClick={ item.tasks ? () => onClickItem(item) : null } className={classNames(item.className, {active: item.isActive})}>
+				<li 
+				key={item.id}
+				onClick={ item.tasks ? () => onClickItem(item) : null }
+				className={classNames(item.className, {active: activeList && item.id === activeList.id})}>
 					<i>{item.icon ? item.icon : (<Badge color={item.color.name} />)}</i>
 					<span>
 						{item.name}

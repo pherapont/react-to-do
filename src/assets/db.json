@@ -8,7 +8,8 @@
     {
       "id": 2,
       "name": "Фронтенд",
-      "colorId": 4
+      "colorId": 4,
+      "isActive": true
     },
     {
       "id": 4,
