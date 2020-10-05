@@ -5,24 +5,25 @@ import AddTaskForm from './AddTaskForm';
 import './Tasks.scss'
 import editIcon from './../../assets/img/edit.svg'
 
-export default function Tasks( {list, onEditTitle} ) {
+export default function Tasks( {list, onEditTitle, onAddTask, onLoading, emptyTasks} ) {
 
 	const editTitle = () => {
 		const newTitle =  prompt('Новый заголовок списка', list.name)
 		onEditTitle(list.id, newTitle)
 	}
-	
+
 	return (
 		<div className="tasks">
-			<h2 className="tasks__title">
+			<h2 style={{ color: list.color.hex }} className="tasks__title">
 				{list.name}
 				<img onClick={editTitle} src={editIcon} alt="Иконка редактировать" />
 			</h2>
 
 			<div className="tasks__items">
-				{!list.tasks.length > 0 && <h2>Задачи отсутствуют</h2>}
-				{list.tasks &&
-				list.tasks.map( task => (
+
+				{ emptyTasks && !list.tasks.length > 0 && <h2>Задачи отсутствуют</h2> }
+
+				{ list.tasks && list.tasks.map( task => (
 					<div key={task.id} className="tasks__item-row">
 						<div className="checkbox">
 							<input id={task.id} type="checkbox"/>
@@ -37,7 +38,10 @@ export default function Tasks( {list, onEditTitle} ) {
 				))}
 			</div>
 
-			<AddTaskForm />
+			<AddTaskForm
+				onAddTask={(value) => onAddTask(value, list.id) }
+				onLoading={onLoading}
+			/>
 			
 		</div>
 )

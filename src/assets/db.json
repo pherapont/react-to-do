@@ -56,6 +56,48 @@
       "listId": 2,
       "text": "Redux (redux-observable, redux-saga)",
       "completed": false
+    },
+    {
+      "listId": 2,
+      "text": "Vue",
+      "completed": false,
+      "id": 11
+    },
+    {
+      "listId": 4,
+      "text": "Достоевский",
+      "completed": false,
+      "id": 12
+    },
+    {
+      "listId": 1,
+      "text": "mango",
+      "completed": false,
+      "id": 13
+    },
+    {
+      "listId": 1,
+      "text": "apricont",
+      "completed": false,
+      "id": 14
+    },
+    {
+      "listId": 1,
+      "text": "banana",
+      "completed": false,
+      "id": 15
+    },
+    {
+      "listId": 1,
+      "text": "chupa-chups",
+      "completed": false,
+      "id": 16
+    },
+    {
+      "listId": 5,
+      "text": "Forsaj",
+      "completed": false,
+      "id": 17
     }
   ],
   "colors": [

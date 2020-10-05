@@ -18,7 +18,7 @@ const List = ({items, isRemoveable, onClick, onRemove, onClickItem, activeList})
 
 	return (
 		<ul onClick = {onClick} className="list">
-			{items.map(item => (
+			{items && items.map(item => (
 				<li 
 				key={item.id}
 				onClick={ item.tasks ? () => onClickItem(item) : null }

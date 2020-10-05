@@ -1,4 +1,8 @@
 .tasks {
+	margin-bottom: 40px;
+	&:last-child {
+		margin-bottom: 0;
+	}
 	&__title {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: bold;
